@@ -4,3 +4,6 @@ plugin/
 *~
 *.swp
 *.swo
+
+**/lua-language-server
+
