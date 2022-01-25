@@ -19,6 +19,12 @@ require 'config'
 
 require 'plugins'
 
-require 'lsp'
+require 'keymappings'
 
-require 'treesitter'
+require 'plugins/lsp'
+
+require 'plugins/treesitter'
+
+require 'plugins/telescope'
+
+require 'plugins/lspsaga'

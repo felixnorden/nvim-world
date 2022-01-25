@@ -2,6 +2,8 @@
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
 local luasnip = require 'luasnip'
+local map = vim.api.nvim_set_keymap
+local default_opts = { noremap = true, silent = true }
 
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
@@ -26,7 +28,25 @@ _G.s_tab_complete = function()
 end
 
 -- Map tab to the above tab complete functiones
-vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+map('i', '<leader><Tab>', 'v:lua.tab_complete()', { expr = true })
+map('s', '<leader><Tab>', 'v:lua.tab_complete()', { expr = true })
+map('i', '<leader><S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+map('s', '<leader><S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+
+-- Telescope
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts)
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_opts)
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)
+
+-- LSPSaga
+map('n', 'gh', '<cmd>Lspsaga lsp_finder<cr>', default_opts)
+map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', default_opts)
+-- scroll down hover doc or scroll in definition preview
+map('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', default_opts)
+-- scroll up hover doc
+map('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', default_opts)
+-- code action
+map('n', '<leader>ca', '<cmd>Lspsaga code_action<cr>', default_opts)
+map('v', '<leader>ca', '<cmd>Lspsaga range_code_action<cr>', default_opts)
+map('n', '<leader>gr', '<cmd>Lspsaga rename<cr>', default_opts)
