@@ -29,7 +29,8 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 
 -- Colorscheme
-vim.cmd('colorscheme rose-pine')
+vim.cmd('set termguicolors')
+vim.cmd('colorscheme nightfly')
 
 -- Extra gutter space for lsp
 vim.o.numberwidth = 4

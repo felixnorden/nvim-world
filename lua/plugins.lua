@@ -5,7 +5,7 @@ packer.startup(function()
   use 'wbthomason/packer.nvim'
 
   -- Colorscheme
-  use 'rose-pine/neovim'
+  use 'bluz71/vim-nightfly-guicolors'
 
   -- Treesitter
   use {
@@ -17,21 +17,37 @@ packer.startup(function()
     run = ':TSUpdate',
   }
 
+  -- Which Key
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  -- Startup Screen
+  use {
+    "startup-nvim/startup.nvim",
+    requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+    config = function()
+      require"startup".setup()
+    end
+  }
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
 
-  -- Galaxyline
+  -- Lualine
   use {
-  'glepnir/galaxyline.nvim',
-    branch = 'main',
-    -- your statusline
---    config = function() require'my_statusline' end,
-    -- some optional icons
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }  -- Telescope
 
-  -- Telescope
   use { 'nvim-telescope/telescope.nvim',
       requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }} }
 

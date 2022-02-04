@@ -23,8 +23,12 @@ require 'keymappings'
 
 require 'plugins/lsp'
 
+require 'plugins/startup'
+
 require 'plugins/treesitter'
 
 require 'plugins/telescope'
 
 require 'plugins/lspsaga'
+
+require 'plugins/lualine'

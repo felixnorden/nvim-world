@@ -5,6 +5,11 @@ local luasnip = require 'luasnip'
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 
+local check_back_space = function()
+  local col = vim.fn.col '.' - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+end
+
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t '<C-n>'
@@ -28,14 +33,15 @@ _G.s_tab_complete = function()
 end
 
 -- Map tab to the above tab complete functiones
-map('i', '<leader><Tab>', 'v:lua.tab_complete()', { expr = true })
-map('s', '<leader><Tab>', 'v:lua.tab_complete()', { expr = true })
-map('i', '<leader><S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
-map('s', '<leader><S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+map('i', '<C-g><Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
+map('s', 'g<Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
+map('i', '<C-g><S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
+map('s', 'g<S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts)
+map('n', '<leader>fc', '<cmd>Telescope git_files<cr>', default_opts)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_opts)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)
 
@@ -46,7 +52,9 @@ map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', default_opts)
 map('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', default_opts)
 -- scroll up hover doc
 map('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', default_opts)
+
+map('n', '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<cr>', default_opts)
 -- code action
 map('n', '<leader>ca', '<cmd>Lspsaga code_action<cr>', default_opts)
 map('v', '<leader>ca', '<cmd>Lspsaga range_code_action<cr>', default_opts)
-map('n', '<leader>gr', '<cmd>Lspsaga rename<cr>', default_opts)
+map('n', 'gr', '<cmd>Lspsaga rename<cr>', default_opts)
