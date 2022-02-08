@@ -52,8 +52,10 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)
 -- LSPSaga
 map('n', 'gh', '<cmd>Lspsaga lsp_finder<cr>', default_opts)
 map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', default_opts)
+
 -- scroll down hover doc or scroll in definition preview
 map('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', default_opts)
+
 -- scroll up hover doc
 map('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', default_opts)
 

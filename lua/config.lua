@@ -37,3 +37,14 @@ vim.o.numberwidth = 4
 vim.o.signcolumn = 'yes'
 
 vim.cmd('set completeopt=menu,menuone,noselect')
+
+-- Add autocommands
+
+local au = require('au')
+
+au({'BufNewFile', 'BufRead'}, {
+  '*.sol,*.solidity',
+  function()
+    vim.bo.filetype = 'solidity'
+  end
+})
