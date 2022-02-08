@@ -35,3 +35,5 @@ vim.cmd('colorscheme nightfly')
 -- Extra gutter space for lsp
 vim.o.numberwidth = 4
 vim.o.signcolumn = 'yes'
+
+vim.cmd('set completeopt=menu,menuone,noselect')

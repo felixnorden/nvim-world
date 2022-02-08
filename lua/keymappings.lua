@@ -1,36 +1,40 @@
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
-local luasnip = require 'luasnip'
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 
-local check_back_space = function()
-  local col = vim.fn.col '.' - 1
-  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+local cmp = require('cmp')
+cmp.setup {
+  completion = {
+    autocomplete = false, -- disable auto-completion.
+  },
+}
+
+_G.vimrc = _G.vimrc or {}
+_G.vimrc.cmp = _G.vimrc.cmp or {}
+_G.vimrc.cmp.lsp = function()
+  cmp.complete({
+    config = {
+      sources = {
+        { name = 'nvim_lsp' }
+      }
+    }
+  })
+end
+_G.vimrc.cmp.snippet = function()
+  cmp.complete({
+    config = {
+      sources = {
+        { name = 'vsnip' }
+      }
+    }
+  })
 end
 
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t '<C-n>'
-  elseif luasnip.expand_or_jumpable() then
-    return t '<Plug>luasnip-expand-or-jump'
-  elseif check_back_space() then
-    return t '<Tab>'
-  else
-    return vim.fn['compe#complete']()
-  end
-end
 
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t '<C-p>'
-  elseif luasnip.jumpable(-1) then
-    return t '<Plug>luasnip-jump-prev'
-  else
-    return t '<S-Tab>'
-  end
-end
+map('i', '<C-x><C-o>', '<Cmd>lua vimrc.cmp.lsp()<CR>', default_opts)
+map('i', '<C-x><C-s>', '<Cmd>lua vimrc.cmp.snippet()<CR>', default_opts)
 
 -- Map tab to the above tab complete functiones
 map('i', '<C-g><Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
