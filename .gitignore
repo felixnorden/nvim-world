@@ -5,5 +5,6 @@ plugin/
 *.swp
 *.swo
 
-**/lua-language-server
 
+/language-servers/*/*
+!/language-servers/**/install.sh
