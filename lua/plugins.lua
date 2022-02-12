@@ -55,11 +55,20 @@ packer.startup(function()
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }  -- Telescope
+  } 
 
-  use { 'nvim-telescope/telescope.nvim',
-      requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }} }
 
+  -- Themes
+  use {"ayu-theme/ayu-vim"}
+  use 'EdenEast/nightfox.nvim'
+
+  -- LSP
+  use { 'neovim/nvim-lspconfig' }
+
+
+  -- Telescope
+  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }} }
+  --
   -- Completions and Snippets
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer'   }
@@ -69,4 +78,5 @@ packer.startup(function()
   use { 'hrsh7th/cmp-vsnip' }
   use { 'hrsh7th/vim-vsnip' }
   use { 'windwp/nvim-autopairs' }
+
 end)
