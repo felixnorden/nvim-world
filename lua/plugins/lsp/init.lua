@@ -6,5 +6,6 @@ end
 require 'plugins/lsp/lua-lsp'
 require 'plugins/lsp/pyright'
 require 'plugins/lsp/solidity'
+require 'plugins/lsp/typescript'
 
 

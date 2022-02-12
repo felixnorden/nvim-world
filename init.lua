@@ -34,3 +34,5 @@ require 'plugins/lspsaga'
 require 'plugins/lualine'
 
 require 'plugins/cmp'
+
+require 'plugins/autopairs'
