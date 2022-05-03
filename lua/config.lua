@@ -30,7 +30,7 @@ vim.o.softtabstop = 2
 
 -- Colorscheme
 vim.cmd('set termguicolors')
-vim.cmd('colorscheme nightfly')
+vim.cmd('colorscheme moonlight')
 
 -- Extra gutter space for lsp
 vim.o.numberwidth = 4

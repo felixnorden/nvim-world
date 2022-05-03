@@ -6,6 +6,10 @@ packer.startup(function()
 
   -- Colorscheme
   use 'bluz71/vim-nightfly-guicolors'
+  use 'yonlu/omni.vim'
+  use 'matsuuu/pinkmare'
+  use 'folke/tokyonight.nvim'
+  use 'shaunsingh/moonlight.nvim'
 
   -- Treesitter
   use {
