@@ -38,6 +38,11 @@ packer.startup(function()
     end
   }
 
+  use {
+    'github/copilot.vim',
+    run = ':Copilot setup'
+  }
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
@@ -52,7 +57,6 @@ packer.startup(function()
       requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }} }
 
   -- Completions and Snippets
-  use { 'neovim/nvim-lspconfig' }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer'   }
   use { 'hrsh7th/cmp-path'     }

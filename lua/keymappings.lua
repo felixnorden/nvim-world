@@ -37,10 +37,10 @@ map('i', '<C-x><C-o>', '<Cmd>lua vimrc.cmp.lsp()<CR>', default_opts)
 map('i', '<C-x><C-s>', '<Cmd>lua vimrc.cmp.snippet()<CR>', default_opts)
 
 -- Map tab to the above tab complete functiones
-map('i', '<C-g><Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
-map('s', 'g<Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
-map('i', '<C-g><S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
-map('s', 'g<S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
+--map('i', '<C><Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
+--map('s', '<Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
+--map('i', '<C><S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
+--map('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)
