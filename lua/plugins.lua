@@ -62,10 +62,6 @@ packer.startup(function()
   use {"ayu-theme/ayu-vim"}
   use 'EdenEast/nightfox.nvim'
 
-  -- LSP
-  use { 'neovim/nvim-lspconfig' }
-
-
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }} }
   --
