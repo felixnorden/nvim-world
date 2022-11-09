@@ -17,7 +17,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local opts = {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  cmd = { sumneko_binary, "-E", default_capabilities, sumneko_root_path .. "/main.lua" };
   settings = {
     Lua = {
       runtime = {
@@ -44,7 +44,7 @@ local opts = {
 
 local has_cmp, cmp = pcall(require, "cmp_nvim_lsp")
 if has_cmp then
-  local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = cmp.default_capabilities()
   opts.capabilities = capabilities
 end
 
