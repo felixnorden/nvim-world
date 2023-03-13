@@ -55,11 +55,6 @@ packer.startup(function()
     end
   }
 
-  use {
-    'github/copilot.vim',
-    run = ':Copilot setup'
-  }
-
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
