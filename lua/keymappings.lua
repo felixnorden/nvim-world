@@ -4,50 +4,20 @@
 local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 
-local cmp = require('cmp')
-cmp.setup {
-  completion = {
-    autocomplete = false, -- disable auto-completion.
-  },
-}
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-_G.vimrc = _G.vimrc or {}
-_G.vimrc.cmp = _G.vimrc.cmp or {}
-_G.vimrc.cmp.lsp = function()
-  cmp.complete({
-    config = {
-      sources = {
-        { name = 'nvim_lsp' }
-      }
-    }
-  })
-end
-_G.vimrc.cmp.snippet = function()
-  cmp.complete({
-    config = {
-      sources = {
-        { name = 'vsnip' }
-      }
-    }
-  })
-end
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
-map('i', '<C-x><C-o>', '<Cmd>lua vimrc.cmp.lsp()<CR>', default_opts)
-map('i', '<C-x><C-s>', '<Cmd>lua vimrc.cmp.snippet()<CR>', default_opts)
-
--- Map tab to the above tab complete functiones
---map('i', '<C><Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
---map('s', '<Tab>', 'v:lua.tab_complete()', { expr = true, noremap = false })
---map('i', '<C><S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
---map('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true, noremap = false })
-
--- Telescope
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts)
-map('n', '<leader>fc', '<cmd>Telescope git_files<cr>', default_opts)
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_opts)
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)
 
 -- LSPSaga
 map('n', 'gh', '<cmd>Lspsaga lsp_finder<cr>', default_opts)
