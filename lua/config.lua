@@ -64,9 +64,11 @@ vim.o.signcolumn = 'yes'
 
 local au = require('au')
 
-au({'BufNewFile', 'BufRead'}, {
+au({ 'BufNewFile', 'BufRead' }, {
   '*.sol,*.solidity',
   function()
     vim.bo.filetype = 'solidity'
   end
 })
+
+au({ "BufReadPost", "FileReadPost" }, { '*', "normal zx zR" })
