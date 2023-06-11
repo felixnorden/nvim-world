@@ -1,1 +1,5 @@
---require("startup").setup({theme = "dashboard"})
+require('startup').setup({
+  section_1 = {
+
+  }
+})

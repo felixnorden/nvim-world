@@ -1,5 +1,8 @@
 local lspconfig = require('lspconfig')
 
-lspconfig.solc.setup{
-  root_dir = lspconfig.util.root_pattern('hardhat.config.*', '.git')
+return {
+  cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
+  filetypes = { 'solidity' },
+  root_dir = lspconfig.util.find_git_ancestor,
+  single_file_support = true,
 }
