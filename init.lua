@@ -1,16 +1,2 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
-require 'plugins'
-
-require 'config'
-
-require 'keymappings'
-
-require 'plugins/lsp'
-
-require 'plugins/cmp'
-
-require 'plugins/treesitter'
-
-require 'plugins/telescope'
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
