@@ -1,6 +1,8 @@
 return {
   {
     "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
     opts = {
       integrations = {
         alpha = true,
@@ -29,6 +31,14 @@ return {
         treesitter = true,
         which_key = true,
       },
+    },
+  },
+
+  -- Configure LazyVim to load gruvbox
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin-macchiato",
     },
   },
 }

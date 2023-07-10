@@ -5,7 +5,16 @@ return {
       ensure_installed = {
         "marksman",
         "pyright",
-        "soliditysolidity_ls_nomicfoundation",
+        "solidity_ls_nomicfoundation",
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        solidity_ls_nomicfoundation = {},
+        pyright = {},
       },
     },
   },
